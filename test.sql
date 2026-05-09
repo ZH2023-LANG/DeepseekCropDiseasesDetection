@@ -1,0 +1,298 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server Type    : MySQL
+ Source Server Version : 90000 (9.0.0)
+ Source Host           : localhost:3306
+ Source Schema         : test
+
+ Target Server Type    : MySQL
+ Target Server Version : 90000 (9.0.0)
+ File Encoding         : 65001
+
+ Date: 24/04/2025 14:45:34
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for camerarecords
+-- ----------------------------
+DROP TABLE IF EXISTS `camerarecords`;
+CREATE TABLE `camerarecords`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `weight` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `conf` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `start_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `out_video` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `kind` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of camerarecords
+-- ----------------------------
+INSERT INTO `camerarecords` VALUES (15, 'best.onnx', '0.67', 'admin', '2025-04-24 11:04:12', 'http://localhost:9999/files/e90b64e8528c4c6dad23a139184a9055_output.mp4', NULL);
+
+-- ----------------------------
+-- Table structure for imgrecords
+-- ----------------------------
+DROP TABLE IF EXISTS `imgrecords`;
+CREATE TABLE `imgrecords`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `input_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `out_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `confidence` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `all_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `conf` decimal(5, 2) NULL DEFAULT NULL,
+  `weight` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `start_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `ai` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `suggestion` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 527 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of imgrecords
+-- ----------------------------
+INSERT INTO `imgrecords` VALUES (353, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/000bf685-b305-408b-91f4-37030f8e62db___GH_HL-Leaf-308-1_JPG.rf.1f08d1f50f4548e6737fd68d22139ff5.jpg', 'http://localhost:9999/files/105f73f69634414ab7a2d36485ed0c2d_result_000bf685-b305-408b-91f4-37030f8e62db___GH_HL-Leaf-308-1_JPG.rf.1f08d1f50f4548e6737fd68d22139ff5.jpg', '[\"96.83%\"]', '0.552秒', 0.50, 'best.pt', '111', '2025-04-14 10:02:37', '[\"番茄-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (354, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00a14441-7a62-4034-bc40-b196aeab2785___RS_NLB-3932_JPG.rf.4a1c93849cff0a9f216d219a4d987eac.jpg', 'http://localhost:9999/files/408d957101d4488eb3c615bd15e5cb87_result_00a14441-7a62-4034-bc40-b196aeab2785___RS_NLB-3932_JPG.rf.4a1c93849cff0a9f216d219a4d987eac.jpg', '[\"84.72%\"]', '0.018秒', 0.50, 'best.pt', '222', '2025-04-14 10:02:37', '[\"玉米-大斑病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (355, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00a20f6f-e8bd-4453-9e25-36ea70feb626___RS_GLSp-4655_JPG.rf.bdc87380fc24b4f2c9f7c8340b7101d5.jpg', 'http://localhost:9999/files/e080ecd0f53a4bf29d409e00142cb806_result_00a20f6f-e8bd-4453-9e25-36ea70feb626___RS_GLSp-4655_JPG.rf.bdc87380fc24b4f2c9f7c8340b7101d5.jpg', '[\"96.68%\"]', '0.018秒', 0.50, 'best.pt', '222', '2025-04-15 10:02:37', '[\"玉米-叶斑病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (356, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00a79a7b-8b96-452c-91c8-deb54eaa28e5___CREC_HLB-7231_JPG.rf.de9249850cf2c46bc3c293aff8f908de.jpg', 'http://localhost:9999/files/f5aaa83e0d804375adad2312c16927eb_result_00a79a7b-8b96-452c-91c8-deb54eaa28e5___CREC_HLB-7231_JPG.rf.de9249850cf2c46bc3c293aff8f908de.jpg', '[\"95.75%\"]', '0.025秒', 0.50, 'best.pt', '111', '2025-04-15 10:02:37', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (357, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00a7c269-3476-4d25-b744-44d6353cd921___GCREC_Bact-Sp-5807_JPG.rf.de0b9f3d55fbb75872119b66b471ae74.jpg', 'http://localhost:9999/files/667961fd541b4899af74ac8dddac9b00_result_00a7c269-3476-4d25-b744-44d6353cd921___GCREC_Bact-Sp-5807_JPG.rf.de0b9f3d55fbb75872119b66b471ae74.jpg', '[\"94.14%\"]', '0.024秒', 0.50, 'best.pt', '111', '2025-04-15 10:02:37', '[\"番茄-细菌性斑疹病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (358, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00a962ad-573b-44b1-97ae-912a6bd6e0b0___FAM_L-Blight-1431_JPG.rf.647b7803d7fe350b3a77bc67a996b81e.jpg', 'http://localhost:9999/files/55b9dcd7652e4ed19dbba16cc42d1ffe_result_00a962ad-573b-44b1-97ae-912a6bd6e0b0___FAM_L-Blight-1431_JPG.rf.647b7803d7fe350b3a77bc67a996b81e.jpg', '[\"97.51%\"]', '0.024秒', 0.50, 'best.pt', '123', '2025-04-16 10:02:37', '[\"葡萄-叶枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (359, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00b1f292-23dd-44d4-aad3-c1ffb6a6ad5a___RS_LB-4479_JPG.rf.f028e8f6720cd344f95e8875a0a6141d.jpg', 'http://localhost:9999/files/841403d0199f4171ad9a1a6a5b07b517_result_00b1f292-23dd-44d4-aad3-c1ffb6a6ad5a___RS_LB-4479_JPG.rf.f028e8f6720cd344f95e8875a0a6141d.jpg', '[\"95.12%\"]', '0.023秒', 0.50, 'best.pt', '222', '2025-04-16 10:02:37', '[\"土豆-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (360, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00b7e89a-e129-4576-b51f-48923888bff9___GCREC_Bact-Sp-6202_JPG.rf.e2cbb896051752b2c7f48b4f3b25360d.jpg', 'http://localhost:9999/files/867dba78e86047569ad730a3fc49ba93_result_00b7e89a-e129-4576-b51f-48923888bff9___GCREC_Bact-Sp-6202_JPG.rf.e2cbb896051752b2c7f48b4f3b25360d.jpg', '[\"92.63%\"]', '0.030秒', 0.50, 'best.pt', '222', '2025-04-16 10:02:37', '[\"番茄-早疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (361, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00ce4c63-9913-4b16-898c-29f99acf0dc3___RS_Late-B-4982_JPG.rf.7ab31227dcced09371ffd1b9bbdc0eea.jpg', 'http://localhost:9999/files/81e754ad4f7646a5829f495c34bdd91a_result_00ce4c63-9913-4b16-898c-29f99acf0dc3___RS_Late-B-4982_JPG.rf.7ab31227dcced09371ffd1b9bbdc0eea.jpg', '[\"98.10%\"]', '0.030秒', 0.50, 'best.pt', '333', '2025-04-16 10:02:37', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (362, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00d994b5-92bb-433e-905f-4c1b33c3baf1___UF-Citrus_HLB_Lab-9932_JPG.rf.8a97e69168eafc5bb2d54f9b337b696b.jpg', 'http://localhost:9999/files/5a39c6c878a4419c9cf03db7cc283095_result_00d994b5-92bb-433e-905f-4c1b33c3baf1___UF-Citrus_HLB_Lab-9932_JPG.rf.8a97e69168eafc5bb2d54f9b337b696b.jpg', '[\"97.27%\"]', '0.024秒', 0.50, 'best.pt', '123', '2025-04-17 10:02:37', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (363, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/00fea166-176f-4ff9-a0c2-08d3d0263987___CREC_HLB-4726_JPG.rf.3f98ae1e66a22f286c7a1b9c2618e954.jpg', 'http://localhost:9999/files/b191b4ff81c3429983fda148eac2a572_result_00fea166-176f-4ff9-a0c2-08d3d0263987___CREC_HLB-4726_JPG.rf.3f98ae1e66a22f286c7a1b9c2618e954.jpg', '[\"97.36%\"]', '0.019秒', 0.50, 'best.pt', '123', '2025-04-17 10:02:37', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (364, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0563d959-cdc8-4e5f-be50-aff6238218be___FAM_B-Rot-3600_JPG.rf.2327da002032515ec7b7f6600fa12105.jpg', 'http://localhost:9999/files/e59529eb03d34c2694cd8b1e7b83697a_result_0563d959-cdc8-4e5f-be50-aff6238218be___FAM_B-Rot-3600_JPG.rf.2327da002032515ec7b7f6600fa12105.jpg', '[\"97.46%\"]', '0.024秒', 0.50, 'best.pt', '222', '2025-04-17 10:02:37', '[\"葡萄-黑腐病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (365, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a05b466-12ed-4ef3-935c-ea7e73107705___Rut-_Bact-S-3353_JPG.rf.4ebd3161b6f4233a40bece3c4b922341.jpg', 'http://localhost:9999/files/d699200206324320a69dc476d9eddbcc_result_0a05b466-12ed-4ef3-935c-ea7e73107705___Rut-_Bact-S-3353_JPG.rf.4ebd3161b6f4233a40bece3c4b922341.jpg', '[\"93.46%\"]', '0.024秒', 0.50, 'best.pt', '222', '2025-04-17 10:02:38', '[\"桃子-桃细菌性穿孔病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (366, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a205a11-1e64-49f7-93c2-ad59312b4f83___RS_HL-0334_JPG.rf.38e1e52ba8da12b0707b77e75e095193.jpg', 'http://localhost:9999/files/2e04144c6d3f48bd9bed5ba1186c4ece_result_0a205a11-1e64-49f7-93c2-ad59312b4f83___RS_HL-0334_JPG.rf.38e1e52ba8da12b0707b77e75e095193.jpg', '[\"88.18%\"]', '0.024秒', 0.50, 'best.pt', '222', '2025-04-18 10:02:38', '[\"番茄-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (367, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a31e630-0d98-416b-b0e4-88a88aad1dc5___RS_HL-9653_JPG.rf.a54bd420bd5cb1a294670daefcaf95a7.jpg', 'http://localhost:9999/files/07d4aac250cf4200b36ef19d6f869d76_result_0a31e630-0d98-416b-b0e4-88a88aad1dc5___RS_HL-9653_JPG.rf.a54bd420bd5cb1a294670daefcaf95a7.jpg', '[\"95.46%\"]', '0.024秒', 0.50, 'best.pt', 'admin', '2025-04-18 10:02:38', '[\"番茄-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (368, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a3f65fc-ef1c-4aed-b235-46bae4e5c0e7___GHLB2-Leaf-9065_JPG.rf.fcfd9327d2f29f3d6959da7d2ad31ce1.jpg', 'http://localhost:9999/files/73243cbdd22b4b8b9e6b2644b6e3c7a4_result_0a3f65fc-ef1c-4aed-b235-46bae4e5c0e7___GHLB2-Leaf-9065_JPG.rf.fcfd9327d2f29f3d6959da7d2ad31ce1.jpg', '[\"95.80%\"]', '0.024秒', 0.50, 'best.pt', '222', '2025-04-18 10:02:38', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (369, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.4ff156da1d3c79757f5670d8b4c7618e.jpg', 'http://localhost:9999/files/26f01a70344747eea07f849fdacbfa7c_result_0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.4ff156da1d3c79757f5670d8b4c7618e.jpg', '[\"79.69%\"]', '0.024秒', 0.50, 'best.pt', '111', '2025-04-18 10:02:38', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (370, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.a8255e36477339a801b4a9d78a662270.jpg', 'http://localhost:9999/files/2aba7f0c8003463b8010c44eed8294bc_result_0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.a8255e36477339a801b4a9d78a662270.jpg', '[\"79.69%\"]', '0.024秒', 0.50, 'best.pt', '333', '2025-04-19 10:02:38', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (371, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a4d80c5-8529-43cc-98ce-fbf987641f82___UF-Citrus_HLB_Lab-1539_JPG.rf.f5ec06b6c0d89e2ec11493f1c4acf383.jpg', 'http://localhost:9999/files/356a168471524bd9b1d572ef44ce0e02_result_0a4d80c5-8529-43cc-98ce-fbf987641f82___UF-Citrus_HLB_Lab-1539_JPG.rf.f5ec06b6c0d89e2ec11493f1c4acf383.jpg', '[\"96.04%\"]', '0.024秒', 0.50, 'best.pt', '123', '2025-04-19 10:02:38', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (372, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a68a294-30d1-4422-ab7e-a1909ec277f7___JR_Sept-L-S-8443_JPG.rf.541a5dff91dbb01f2c5ba634152c54f3.jpg', 'http://localhost:9999/files/f7851277ce0141e5b75f1c5ae1285dd0_result_0a68a294-30d1-4422-ab7e-a1909ec277f7___JR_Sept-L-S-8443_JPG.rf.541a5dff91dbb01f2c5ba634152c54f3.jpg', '[\"95.95%\"]', '0.025秒', 0.50, 'best.pt', '333', '2025-04-19 10:02:38', '[\"番茄-斑枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (373, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a71ba91-8bde-4a91-84a9-bf950488f718___Rutg-_Bact-S-2121_JPG.rf.b37b3a49d78523f7bb54fcd4cc737348.jpg', 'http://localhost:9999/files/dd817b3f11c0452f9e93e781d907d5d3_result_0a71ba91-8bde-4a91-84a9-bf950488f718___Rutg-_Bact-S-2121_JPG.rf.b37b3a49d78523f7bb54fcd4cc737348.jpg', '[\"92.38%\"]', '0.024秒', 0.50, 'best.pt', '111', '2025-04-20 10:02:38', '[\"桃子-桃细菌性穿孔病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (374, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a76257e-6a78-459b-8f51-a266805121eb___Matt-S_CG-2527_JPG.rf.a5a68c913c88756097638ec19540329f.jpg', 'http://localhost:9999/files/d8cb14c1ada240cda79c8c12b8b086ad_result_0a76257e-6a78-459b-8f51-a266805121eb___Matt-S_CG-2527_JPG.rf.a5a68c913c88756097638ec19540329f.jpg', '[\"95.02%\"]', '0.017秒', 0.50, 'best.pt', '123', '2025-04-20 10:02:38', '[\"番茄-斑枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (375, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0a8967d4-bb72-4fe4-8096-55fc57437557___RS_Late-B-6974_JPG.rf.03e109c1bd4e7eed9fb47348ed8aca69.jpg', 'http://localhost:9999/files/4dc95d2e5a214d92b146e77ba4f7d230_result_0a8967d4-bb72-4fe4-8096-55fc57437557___RS_Late-B-6974_JPG.rf.03e109c1bd4e7eed9fb47348ed8aca69.jpg', '[\"94.87%\", \"71.88%\", \"52.54%\"]', '0.022秒', 0.50, 'best.pt', '111', '2025-04-20 10:02:38', '[\"番茄-晚疫病\", \"番茄-晚疫病\", \"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (376, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0ab271a7-765e-4675-8bfc-e249c0c86fdd___Keller-St_CG-1778_JPG.rf.1d437ed72110c112ceae775b48997960.jpg', 'http://localhost:9999/files/b646aaefc3364763954ec03bb48d238f_result_0ab271a7-765e-4675-8bfc-e249c0c86fdd___Keller-St_CG-1778_JPG.rf.1d437ed72110c112ceae775b48997960.jpg', '[\"92.68%\"]', '0.024秒', 0.50, 'best.pt', '123', '2025-04-21 10:02:38', '[\"番茄-斑枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (377, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0aba594e-8b7c-4968-b556-a4287f277152___CREC_HLB-6399_JPG.rf.bc613477e595d687ebba5ae7bab1427b.jpg', 'http://localhost:9999/files/73eb79b6a5e446478725e98bdd6c3aab_result_0aba594e-8b7c-4968-b556-a4287f277152___CREC_HLB-6399_JPG.rf.bc613477e595d687ebba5ae7bab1427b.jpg', '[\"97.22%\"]', '0.029秒', 0.50, 'best.pt', '123', '2025-04-21 10:02:38', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (378, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0ac12d2d-a98c-4e25-b715-94e7579a98f1___FREC_Pwd-M-4887_JPG.rf.1784d3c2c87a570f033958431a5980f5.jpg', 'http://localhost:9999/files/3f22432b01394b02a23be2a0da1f9797_result_0ac12d2d-a98c-4e25-b715-94e7579a98f1___FREC_Pwd-M-4887_JPG.rf.1784d3c2c87a570f033958431a5980f5.jpg', '[\"98.97%\"]', '0.019秒', 0.50, 'best.pt', '333', '2025-04-21 10:02:39', '[\"樱桃-白粉病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (379, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0ac36661-a47d-47ff-8948-42edec033b87___Crnl_L-Mold-9127_JPG.rf.8de9eb6a1cc6476bc266542692e8cc0d.jpg', 'http://localhost:9999/files/519d8d649c924f65b58f79904870e5e8_result_0ac36661-a47d-47ff-8948-42edec033b87___Crnl_L-Mold-9127_JPG.rf.8de9eb6a1cc6476bc266542692e8cc0d.jpg', '[\"87.60%\"]', '0.024秒', 0.50, 'best.pt', '111', '2025-04-21 10:02:39', '[\"番茄-叶霉病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (380, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0b19e488-1361-49b9-a5bc-b47d5bd8207c___FAM_L-Blight-4587_JPG.rf.f23d0be5fd2453856f59832d732dfd10.jpg', 'http://localhost:9999/files/09891dcc3aae4d5f9eccfd1a0a2e3646_result_0b19e488-1361-49b9-a5bc-b47d5bd8207c___FAM_L-Blight-4587_JPG.rf.f23d0be5fd2453856f59832d732dfd10.jpg', '[\"95.46%\"]', '0.024秒', 0.50, 'best.pt', '123', '2025-04-21 10:02:39', '[\"葡萄-叶枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (381, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0b27c03f-b3bc-4d96-9b76-6fbd779404b9___NREC_B-Spot-1799_JPG.rf.73b75327e4a2dd65d2433213eda82d08.jpg', 'http://localhost:9999/files/935e83a154e543e5bc74a0840239c32d_result_0b27c03f-b3bc-4d96-9b76-6fbd779404b9___NREC_B-Spot-1799_JPG.rf.73b75327e4a2dd65d2433213eda82d08.jpg', '[\"96.29%\"]', '0.018秒', 0.50, 'best.pt', 'admin', '2025-04-22 10:02:39', '[\"甜椒-细菌性斑疹\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (382, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0b6caac4-cc62-4c46-9de4-1815a0aa6dbe___GHLB2-Leaf-8799_JPG.rf.332270a78d884d004704103e4cf64fc1.jpg', 'http://localhost:9999/files/e03cb2fb0e2246b6918efc6facf96cdf_result_0b6caac4-cc62-4c46-9de4-1815a0aa6dbe___GHLB2-Leaf-8799_JPG.rf.332270a78d884d004704103e4cf64fc1.jpg', '[\"95.12%\"]', '0.023秒', 0.50, 'best.pt', '111', '2025-04-22 10:02:39', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (383, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/0b7c3223-4ece-4051-95df-a870f7e239e8___CREC_HLB-5449_JPG.rf.7e186d28d2c28d55713ade521b3b1557.jpg', 'http://localhost:9999/files/b3961df8143d4aeb901a0e1750c97c91_result_0b7c3223-4ece-4051-95df-a870f7e239e8___CREC_HLB-5449_JPG.rf.7e186d28d2c28d55713ade521b3b1557.jpg', '[\"97.41%\"]', '0.024秒', 0.50, 'best.pt', '123', '2025-04-22 10:02:39', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (384, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/14227104_jpg.rf.f88746ec1fe98166c2900879de0c9124.jpg', 'http://localhost:9999/files/0afc9b6191b148e59a8337112e21cde5_result_14227104_jpg.rf.f88746ec1fe98166c2900879de0c9124.jpg', '[\"96.19%\", \"87.74%\"]', '0.020秒', 0.50, 'best.pt', '222', '2025-04-22 10:02:39', '[\"木薯-绿斑病\", \"木薯-绿斑病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (385, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/1697161067_jpg.rf.7c15fbd2185ef74647546c139c546162.jpg', 'http://localhost:9999/files/78516f6254614bcd8e7ceeba6cb0af31_result_1697161067_jpg.rf.7c15fbd2185ef74647546c139c546162.jpg', '[\"60.74%\", \"59.62%\"]', '0.023秒', 0.50, 'best.pt', 'admin', '2025-04-22 10:02:39', '[\"木薯-细菌性枯萎病\", \"木薯-细菌性枯萎病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (386, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/2109198789_jpg.rf.31c4af2ba9e46491ba2fb16abd58808c.jpg', 'http://localhost:9999/files/9f6c115f16694c3e9a6ec11176ee5b84_result_2109198789_jpg.rf.31c4af2ba9e46491ba2fb16abd58808c.jpg', '[\"72.66%\", \"62.99%\"]', '0.024秒', 0.50, 'best.pt', '123', '2025-04-23 10:02:39', '[\"木薯-细菌性枯萎病\", \"木薯-细菌性枯萎病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (387, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/2151417299_jpg.rf.9d62fe3f618c86cc3a2ad56bb3d5a800.jpg', 'http://localhost:9999/files/8a8bcdb4f22740449519ad2f43ea3413_result_2151417299_jpg.rf.9d62fe3f618c86cc3a2ad56bb3d5a800.jpg', '[\"52.34%\"]', '0.030秒', 0.50, 'best.pt', 'admin', '2025-04-23 10:02:39', '[\"木薯-细菌性枯萎病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (388, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/2e1013a9-88bb-494f-9ed5-7e8e79f9a7ca___RS_NLB-3606-copy_jpg.rf.1f83205263403ec4e27fed035781c822.jpg', 'http://localhost:9999/files/538ff9e9314f4b2697778bb6e47736d6_result_2e1013a9-88bb-494f-9ed5-7e8e79f9a7ca___RS_NLB-3606-copy_jpg.rf.1f83205263403ec4e27fed035781c822.jpg', '[\"90.04%\"]', '0.024秒', 0.50, 'best.pt', '111', '2025-04-23 10:02:39', '[\"玉米-大斑病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (389, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/4629f07d-b1d2-4569-84fc-c86675a5483d___Rutg-_HL-2424_JPG.rf.70c72d14a82266396eb35a8004fe3994.jpg', 'http://localhost:9999/files/52d75fcf4fb54267be3b9f384d83824d_result_4629f07d-b1d2-4569-84fc-c86675a5483d___Rutg-_HL-2424_JPG.rf.70c72d14a82266396eb35a8004fe3994.jpg', '[\"86.52%\"]', '0.030秒', 0.50, 'best.pt', '333', '2025-04-23 10:02:39', '[\"桃子-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (390, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/87e7e3be-acc9-45bf-a843-5528b1ec9484___Crnl_L-Mold-8924_JPG.rf.afd5687787271980002ab1205202077d.jpg', 'http://localhost:9999/files/36751205307f4383aba3da71beadc6ab_result_87e7e3be-acc9-45bf-a843-5528b1ec9484___Crnl_L-Mold-8924_JPG.rf.afd5687787271980002ab1205202077d.jpg', '[\"88.96%\"]', '0.023秒', 0.50, 'best.pt', '222', '2025-04-23 10:02:39', '[\"番茄-叶霉病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (391, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/e01a2a7d-49cd-43b0-9afa-cdcd59aaa558___Rutg-_HL-2409_JPG.rf.32bf7362bcedf73342245df924353666.jpg', 'http://localhost:9999/files/0039c926ab8b46a5af696da32fcb48ec_result_e01a2a7d-49cd-43b0-9afa-cdcd59aaa558___Rutg-_HL-2409_JPG.rf.32bf7362bcedf73342245df924353666.jpg', '[\"89.26%\"]', '0.024秒', 0.50, 'best.pt', '111', '2025-04-24 10:02:39', '[\"桃子-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (392, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/e01a2a7d-49cd-43b0-9afa-cdcd59aaa558___Rutg-_HL-2409_JPG.rf.7ee8177112526f42d123b94f0b779485.jpg', 'http://localhost:9999/files/75a15c31b173436eae9827e5398184b8_result_e01a2a7d-49cd-43b0-9afa-cdcd59aaa558___Rutg-_HL-2409_JPG.rf.7ee8177112526f42d123b94f0b779485.jpg', '[\"89.31%\"]', '0.020秒', 0.50, 'best.pt', '333', '2025-04-24 10:02:39', '[\"桃子-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (393, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/shape-323-_jpg.rf.0c4b357574e2b43f989e5e6e5fda99d4.jpg', 'http://localhost:9999/files/050745b1e6114ab4bc314be6a9526ade_result_shape-323-_jpg.rf.0c4b357574e2b43f989e5e6e5fda99d4.jpg', '[\"85.11%\"]', '0.023秒', 0.50, 'best.pt', '333', '2025-04-24 10:02:40', '[\"水稻-稻瘟病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (394, 'http://localhost:9999/files/a2f60f484e5947be9592a03a3befae97/shape-346-_jpg.rf.9cd079d62fdc8f93a33c75027db5f4c5.jpg', 'http://localhost:9999/files/a6c2ce844dfe4d0a9a9db7b10caaf4f2_result_shape-346-_jpg.rf.9cd079d62fdc8f93a33c75027db5f4c5.jpg', '[\"81.64%\"]', '0.023秒', 0.50, 'best.pt', '333', '2025-04-24 10:02:40', '[\"水稻-褐斑病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (395, 'http://localhost:9999/files/7108858b493a4c1fb4fb6f4a68ce0d1b_0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.a8255e36477339a801b4a9d78a662270.jpg', 'http://localhost:9999/files/20648acef3f54284951f22485388fdf5_result.jpg', '[\"79.42%\"]', '0.151秒', 0.67, 'best.onnx', 'admin', '2025-04-24 10:25:05', '[\"\\u756a\\u8304-\\u665a\\u75ab\\u75c5\"]', '不使用AI', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (396, 'http://localhost:9999/files/7108858b493a4c1fb4fb6f4a68ce0d1b_0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.a8255e36477339a801b4a9d78a662270.jpg', 'http://localhost:9999/files/445ddc444fdc443b98a067e2a2dae460_result.jpg', '[\"79.42%\"]', '0.392秒', 0.67, 'best.onnx', 'admin', '2025-04-24 10:25:10', '[\"\\u756a\\u8304-\\u665a\\u75ab\\u75c5\"]', 'Qwen', '番茄晚疫病是一种由致病疫霉（Phytophthora infestans）引起的真菌性病害，主要在潮湿和凉爽的气候条件下发生。以下是针对该疾病的建议：\n\n### 病因\n- **环境因素**：高湿度（尤其是连续的阴雨天气）和较低的温度（15-20°C）有利于晚疫病的发生。\n- **传播途径**：孢子可以通过风、雨水或灌溉水传播，也可以通过受感染的种子或植物残体传播。\n\n### 种植建议\n1. **选择抗病品种**：种植对晚疫病具有抗性的番茄品种。\n2. **轮作制度**：避免在同一地块连续种植同一种作物，以减少土壤中病原体的数量。\n3. **田间管理**：保持田间通风透光，及时清理杂草和病株，减少湿度。\n4. **合理灌溉**：采用滴灌或喷灌代替漫灌，减少叶片上的水分积累。\n\n### 治疗措施\n1. **化学防治**：在发病初期使用合适的杀菌剂进行喷雾处理。常用的药剂包括铜制剂、代森锰锌等。\n2. **生物防治**：利用生物农药如枯草芽孢杆菌等进行防治。\n3. **物理防治**：在严重情况下，可以考虑拔除病株并销毁，防止疾病扩散。\n\n综上所述，通过合理的田间管理和科学的防治措施可以有效控制番茄晚疫病的发生和发展。');
+INSERT INTO `imgrecords` VALUES (397, 'http://localhost:9999/files/7c0dda43947d47dc8ca0884e5321e27d_0a71ba91-8bde-4a91-84a9-bf950488f718___Rutg-_Bact-S-2121_JPG.rf.b37b3a49d78523f7bb54fcd4cc737348.jpg', 'http://localhost:9999/files/16a2f9f1b5e64bd989650ae4ae8a1a87_result.jpg', '[\"92.33%\"]', '3.322秒', 0.67, 'best.onnx', 'admin', '2025-04-24 10:28:05', '[\"\\u6843\\u5b50-\\u6843\\u7ec6\\u83cc\\u6027\\u7a7f\\u5b54\\u75c5\"]', 'Qwen', '桃细菌性穿孔病是由细菌（如Pseudomonas syringae pv. syringae）引起的一种常见病害，主要影响桃树的叶片和嫩枝。这种病害通常在春季潮湿的条件下发生，可以通过雨水或灌溉水传播。以下是一些针对桃细菌性穿孔病的实质性建议：\n\n### 为什么会产生这样的疾病\n- **环境因素**：高湿度和低温是该病害发生的重要条件。\n- **传播途径**：通过雨水、灌溉水以及昆虫传播。\n- **植物健康状况**：生长弱、抵抗力差的植物更容易感染。\n\n### 对该作物种植的建议\n1. **选择抗病品种**：种植抗性较强的桃树品种可以有效减少感染风险。\n2. **合理修剪**：保持果园通风透光，减少湿气滞留，有助于降低发病几率。\n3. **科学施肥**：合理施用有机肥和微量元素，增强植株自身抵抗力。\n4. **清洁果园**：定期清理落叶、病枝等，减少病源。\n\n### 对该疾病的治疗措施\n1. **化学防治**：在发病初期使用铜制剂（如波尔多液）或抗生素类药剂（如链霉素）进行喷雾防治。\n2. **生物防治**：利用拮抗微生物（如芽孢杆菌）抑制病原菌生长。\n3. **物理防治**：加强田间管理，及时清除病叶、病枝，并进行焚烧处理。\n\n综上所述，通过综合管理措施可以有效控制桃细菌性穿孔病的发生和发展。希望这些建议对您有所帮助！');
+INSERT INTO `imgrecords` VALUES (398, 'http://localhost:9999/files/26e0f51fbaa1439bbd953ffe460d8db7_0a8967d4-bb72-4fe4-8096-55fc57437557___RS_Late-B-6974_JPG.rf.03e109c1bd4e7eed9fb47348ed8aca69.jpg', 'http://localhost:9999/files/e2c87d38e1f74229affd1398317f6b5b_result.jpg', '[\"94.90%\", \"71.68%\"]', '0.391秒', 0.67, 'best.onnx', 'admin', '2025-04-24 10:28:25', '[\"\\u756a\\u8304-\\u665a\\u75ab\\u75c5\", \"\\u756a\\u8304-\\u665a\\u75ab\\u75c5\"]', 'DeepSeek', '### 番茄晚疫病（Phytophthora infestans）分析与建议  \n\n#### **1. 为什么会产生晚疫病？**  \n- **环境因素**：高湿度（>90%）、凉爽温度（15-22℃）和叶片长时间湿润（如降雨、露水）是真菌繁殖的理想条件。  \n- **传播途径**：病原体通过风雨、灌溉水或工具传播，感染叶片、茎秆和果实。  \n- **种植管理问题**：种植过密、通风不良、连作（同一地块连续种番茄）或未清理病残体。  \n\n#### **2. 种植建议（预防措施）**  \n- **品种选择**：种植抗病品种（如‘铁皮番茄’、‘抗病1号’等）。  \n- **合理密植**：保持株距（50-60cm），避免田间荫蔽，增强通风。  \n- **水分管理**：采用滴灌或沟灌，避免叶片溅水；早晨浇水，确保叶片夜间干燥。  \n- **轮作制度**：与非茄科作物（如豆类、玉米）轮作2-3年，减少土壤病原积累。  \n- **清洁田园**：及时清除病叶、病果，收获后彻底销毁病株残体。  \n\n#### **3. 治疗措施**  \n- **早期药剂防治**：  \n  - **生物农药**：喷施枯草芽孢杆菌（Bacillus subtilis）或木霉菌（Trichoderma）。  \n  - **化学药剂**：发病初期喷施58%甲霜灵·锰锌（500倍液）、72%霜脲·锰锌（800倍液），每7-10天1次，连喷2-3次（注意轮换药剂防抗性）。  \n- **病株处理**：严重病株立即拔除并焚烧，病穴撒生石灰消毒。  \n- **辅助措施**：喷施磷酸二氢钾（0.2%）增强植株抗病力。  \n\n#### **4. 监测与预警**  \n- 潮湿季节每日检查叶片背面（水浸状病斑为初期症状），使用农业APP（如“农事记录”）跟踪田间湿度。  \n\n（注：操作时佩戴口罩和手套，避免药剂接触皮肤。）');
+INSERT INTO `imgrecords` VALUES (399, 'http://localhost:9999/files/b263b72eeab9475aad18d53978bfa923_0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.a8255e36477339a801b4a9d78a662270.jpg', 'http://localhost:9999/files/6281b4705530468aa3cb8216906bceb2_result.jpg', '[\"79.69%\"]', '0.516秒', 0.65, 'best.pt', 'admin', '2025-04-24 10:34:08', '[\"\\u756a\\u8304-\\u665a\\u75ab\\u75c5\"]', '不使用AI', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (400, 'http://localhost:9999/files/b263b72eeab9475aad18d53978bfa923_0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.a8255e36477339a801b4a9d78a662270.jpg', 'http://localhost:9999/files/6980daf6fd6c47318096cdc02b431b14_result.jpg', '[\"79.42%\"]', '0.177秒', 0.65, 'best.onnx', 'admin', '2025-04-24 10:34:14', '[\"\\u756a\\u8304-\\u665a\\u75ab\\u75c5\"]', '不使用AI', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (401, 'http://localhost:9999/files/6c3cc3b1e5d24162bf0190eadf276816_0a3f65fc-ef1c-4aed-b235-46bae4e5c0e7___GHLB2-Leaf-9065_JPG.rf.fcfd9327d2f29f3d6959da7d2ad31ce1.jpg', 'http://localhost:9999/files/e87172eb6f74460d98142e51ffdc64a1_result.jpg', '[\"95.81%\"]', '0.172秒', 0.65, 'best.onnx', 'admin', '2025-04-24 10:34:29', '[\"\\u756a\\u8304-\\u665a\\u75ab\\u75c5\"]', 'DeepSeek', '### 番茄晚疫病（由致病疫霉 *Phytophthora infestans* 引起）  \n\n#### **发病原因**  \n1. **环境条件**：高湿度（＞90%）、凉爽天气（15-22℃）或连续阴雨易爆发，病原菌通过风雨传播。  \n2. **种植管理**：密植、通风不良、田间积水、氮肥过量导致植株抗性差。  \n3. **病源残留**：土壤或病株残体携带病原菌，连作加重病害。  \n\n#### **种植建议**  \n1. **品种选择**：种植抗病品种（如‘抗病1号’、‘瑞星’等）。  \n2. **轮作倒茬**：与非茄科作物（如豆类、玉米）轮作3年以上。  \n3. **环境控制**：  \n   - 采用高垄栽培，确保排水通畅。  \n   - 合理密植（株距≥40cm），及时修剪老叶、病叶，增强通风透光。  \n4. **水肥管理**：  \n   - 避免氮肥过量，增施磷钾肥和有机肥。  \n   - 滴灌替代喷灌，降低叶片湿度。  \n\n#### **治疗措施**  \n1. **早期防治**：发现病叶立即摘除并销毁，全株喷药保护。  \n2. **化学药剂**：  \n   - 保护性药剂：80%代森锰锌600倍液（发病前预防）。  \n   - 治疗性药剂：68%精甲霜·锰锌（瑞凡）800倍液，或10%氰霜唑（科佳）2000倍液，交替使用，每5-7天喷1次，连喷2-3次。  \n3. **生物防治**：喷施枯草芽孢杆菌或木霉菌制剂。  \n\n#### **注意事项**  \n- 喷药时重点覆盖叶背和茎基部，雨后补喷。  \n- 温室种植需降低湿度，夜间开棚排湿。  \n\n（如需其他病害建议，请提供检测结果）');
+INSERT INTO `imgrecords` VALUES (402, 'http://localhost:9999/files/6c3cc3b1e5d24162bf0190eadf276816_0a3f65fc-ef1c-4aed-b235-46bae4e5c0e7___GHLB2-Leaf-9065_JPG.rf.fcfd9327d2f29f3d6959da7d2ad31ce1.jpg', 'http://localhost:9999/files/b928d8ba9c5b48b285e1625487d12236_result.jpg', '[\"95.81%\"]', '0.167秒', 0.65, 'best.onnx', 'admin', '2025-04-24 10:35:30', '[\"\\u756a\\u8304-\\u665a\\u75ab\\u75c5\"]', 'Qwen', '番茄晚疫病是一种由致病疫霉（Phytophthora infestans）引起的严重病害，主要影响番茄的叶片、茎和果实。以下是针对这一情况的建议：\n\n### 为什么会产生这样的疾病\n1. **环境因素**：高湿度和低温是晚疫病发生的必要条件。特别是在连续阴雨天气或夜间温度低、白天温度高的情况下，有利于病菌的繁殖和传播。\n2. **植物健康状况**：植株生长不良、营养不足或受到其他病虫害侵扰时，更容易感染晚疫病。\n3. **管理不当**：如灌溉方式不合理（如大水漫灌）、通风不良等，都会增加发病风险。\n\n### 对该作物种植的建议\n1. **选择抗病品种**：选用抗晚疫病的番茄品种进行种植。\n2. **合理轮作**：避免在同一块土地上连续种植同一种作物，可以减少土壤中病原菌的数量。\n3. **加强田间管理**：保持田间良好的通风透光条件，合理灌溉，避免田间积水。\n4. **及时清除病残体**：发现病株应及时拔除并销毁，减少田间菌源。\n\n### 对该疾病的治疗措施\n1. **化学防治**：在发病初期使用铜制剂、代森锰锌等药剂进行喷雾防治。注意轮换使用不同类型的杀菌剂以防止产生抗药性。\n2. **生物防治**：利用拮抗微生物如木霉菌等对晚疫病进行生物防控。\n3. **物理防治**：通过覆盖地膜等方式减少土壤水分蒸发和地面水分直接接触植物茎基部的机会，降低湿度。\n\n以上建议希望能帮助您有效控制番茄晚疫病的发生与发展。');
+INSERT INTO `imgrecords` VALUES (485, 'http://localhost:9999/files/fc577312f8b941c2b9c6db2c606a9acc_00a14441-7a62-4034-bc40-b196aeab2785___RS_NLB-3932_JPG.rf.4a1c93849cff0a9f216d219a4d987eac.jpg', 'http://localhost:9999/files/47ce0676754f46a0af7dec4301ffc57a_result.jpg', '[\"84.68%\"]', '0.323秒', 0.70, 'best.onnx', 'admin', '2025-04-24 11:01:00', '[\"\\u7389\\u7c73-\\u5927\\u6591\\u75c5\"]', '不使用AI', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (486, 'http://localhost:9999/files/fc577312f8b941c2b9c6db2c606a9acc_00a14441-7a62-4034-bc40-b196aeab2785___RS_NLB-3932_JPG.rf.4a1c93849cff0a9f216d219a4d987eac.jpg', 'http://localhost:9999/files/4a9821940d8148028c54488d5b989152_result.jpg', '[\"84.72%\"]', '0.450秒', 0.70, 'best.pt', 'admin', '2025-04-24 11:01:07', '[\"\\u7389\\u7c73-\\u5927\\u6591\\u75c5\"]', '不使用AI', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (487, 'http://localhost:9999/files/66e0d0b7587c48b4aa834ecc58e6844a_0ab271a7-765e-4675-8bfc-e249c0c86fdd___Keller-St_CG-1778_JPG.rf.1d437ed72110c112ceae775b48997960.jpg', 'http://localhost:9999/files/68330f94cfab450eba1e209187fa0a75_result.jpg', '[\"92.68%\"]', '0.192秒', 0.70, 'best.pt', 'admin', '2025-04-24 11:01:17', '[\"\\u756a\\u8304-\\u6591\\u67af\\u75c5\"]', 'DeepSeek', '### 番茄斑枯病（Septoria Leaf Spot）分析与建议  \n\n#### **病因分析**  \n斑枯病由真菌 **Septoria lycopersici** 引起，主要通过以下途径传播：  \n- **潮湿环境**：高湿度（＞90%）和温暖天气（20-26℃）加速孢子繁殖。  \n- **残留感染**：病原菌可在病株残体、土壤或工具上越冬，次年通过雨水溅射传播。  \n- **密植通风差**：植株间距过小导致叶片长期湿润，利于真菌侵染。  \n\n---  \n\n#### **种植建议**  \n1. **轮作与非寄主间隔**  \n   - 与非茄科作物（如豆类、玉米）轮作3年以上，减少土壤残留病原。  \n2. **田间管理**  \n   - **合理密植**：保持株距≥50cm，行距≥80cm，增强通风。  \n   - **滴灌替代喷灌**：降低叶片湿度，避免水滴传播孢子。  \n   - **清除病残体**：及时摘除病叶并焚烧，避免堆肥。  \n3. **抗病品种**  \n   - 选用抗病品种（如‘Mountain Merit’、‘Defiant’）。  \n\n---  \n\n#### **治疗措施**  \n1. **化学防治**  \n   - **早期喷药**：发病初期喷洒 **嘧菌酯（Azoxystrobin）** 或 **代森锰锌（Mancozeb）**，每7-10天一次，连用2-3次。  \n   - **生物药剂**：枯草芽孢杆菌（Bacillus subtilis）制剂可抑制真菌扩展。  \n2. **物理处理**  \n   - 病叶及时剪除（工具需用70%酒精消毒），避免触碰健康植株。  \n\n---  \n\n#### **监控与预警**  \n- 雨季前后重点检查下部老叶（初期病斑为圆形灰白小点，边缘褐色）。  \n- 使用湿度传感器，保持田间相对湿度＜85%。  \n\n（注：若病情严重，需结合土壤消毒或更换种植区域。）');
+INSERT INTO `imgrecords` VALUES (488, 'http://localhost:9999/files/66e0d0b7587c48b4aa834ecc58e6844a_0ab271a7-765e-4675-8bfc-e249c0c86fdd___Keller-St_CG-1778_JPG.rf.1d437ed72110c112ceae775b48997960.jpg', 'http://localhost:9999/files/0ee88eb81e2d4d848a293305179a9c22_result.jpg', '[\"92.68%\"]', '0.224秒', 0.70, 'best.pt', 'admin', '2025-04-24 11:02:10', '[\"\\u756a\\u8304-\\u6591\\u67af\\u75c5\"]', 'Qwen', '番茄斑枯病是由番茄壳二孢菌（Cladosporium herbarum）或番茄尾孢菌（Cercospora lenta）等真菌引起的，主要影响叶片，有时也会影响果实。该病害在温暖潮湿的环境下更容易发生，特别是在多雨或湿度大的季节。\n\n### 为什么会产生这样的疾病\n\n1. **环境因素**：温暖潮湿的环境有利于病原菌的生长和传播。\n2. **种植密度**：过于密集的种植会导致通风不良，增加湿度，从而促进病害的发生。\n3. **灌溉方式**：不当的灌溉方法（如过度浇水）会增加土壤和空气中的湿度，有利于病原菌的繁殖。\n4. **植物健康状况**：营养不良或受到其他压力（如干旱、高温）的植物更容易感染疾病。\n\n### 对该作物种植的建议\n\n1. **选择抗病品种**：优先选择抗斑枯病的番茄品种进行种植。\n2. **合理密植**：保持适当的植株间距，确保良好的通风条件。\n3. **科学灌溉**：避免过量浇水，尤其是在雨季和湿度高的时期。采用滴灌等精准灌溉技术可以减少水分蒸发，降低田间湿度。\n4. **轮作与清洁田间卫生**：避免连续在同一块土地上种植同一种作物。清除田间杂草和残余植物材料，减少病原体来源。\n\n### 对该疾病的治疗措施\n\n1. **化学防治**：在发病初期使用合适的杀菌剂进行喷洒。常用的有百菌清、代森锰锌等广谱性杀菌剂。\n2. **生物防治**：利用有益微生物如木霉菌、芽孢杆菌等抑制病原菌生长。\n3. **物理防治**：通过改善栽培管理措施减少病害发生的机会。例如，在发病季节前覆盖防虫网或使用遮阳网降低环境湿度。\n\n综上所述，通过综合运用上述方法可以有效预防和控制番茄斑枯病的发生与蔓延。');
+INSERT INTO `imgrecords` VALUES (489, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/000bf685-b305-408b-91f4-37030f8e62db___GH_HL-Leaf-308-1_JPG.rf.1f08d1f50f4548e6737fd68d22139ff5.jpg', 'http://localhost:9999/files/f61c8b2a1bd649d58ae1fa739c136ca3_result_000bf685-b305-408b-91f4-37030f8e62db___GH_HL-Leaf-308-1_JPG.rf.1f08d1f50f4548e6737fd68d22139ff5.jpg', '[\"96.83%\"]', '0.201秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:58', '[\"番茄-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (490, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00a14441-7a62-4034-bc40-b196aeab2785___RS_NLB-3932_JPG.rf.4a1c93849cff0a9f216d219a4d987eac.jpg', 'http://localhost:9999/files/923d393f505e4b12a412f1c6ba2964a3_result_00a14441-7a62-4034-bc40-b196aeab2785___RS_NLB-3932_JPG.rf.4a1c93849cff0a9f216d219a4d987eac.jpg', '[\"84.72%\"]', '0.036秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:58', '[\"玉米-大斑病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (491, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00a20f6f-e8bd-4453-9e25-36ea70feb626___RS_GLSp-4655_JPG.rf.bdc87380fc24b4f2c9f7c8340b7101d5.jpg', 'http://localhost:9999/files/4e1f178de4a94c41a99ac670862f4e4d_result_00a20f6f-e8bd-4453-9e25-36ea70feb626___RS_GLSp-4655_JPG.rf.bdc87380fc24b4f2c9f7c8340b7101d5.jpg', '[\"96.68%\"]', '0.026秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:58', '[\"玉米-叶斑病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (492, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00a79a7b-8b96-452c-91c8-deb54eaa28e5___CREC_HLB-7231_JPG.rf.de9249850cf2c46bc3c293aff8f908de.jpg', 'http://localhost:9999/files/caab35010d714353921fdf8bf6801953_result_00a79a7b-8b96-452c-91c8-deb54eaa28e5___CREC_HLB-7231_JPG.rf.de9249850cf2c46bc3c293aff8f908de.jpg', '[\"95.75%\"]', '0.027秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:58', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (493, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00a7c269-3476-4d25-b744-44d6353cd921___GCREC_Bact-Sp-5807_JPG.rf.de0b9f3d55fbb75872119b66b471ae74.jpg', 'http://localhost:9999/files/ea2f917203544fabae81c5dc93974935_result_00a7c269-3476-4d25-b744-44d6353cd921___GCREC_Bact-Sp-5807_JPG.rf.de0b9f3d55fbb75872119b66b471ae74.jpg', '[\"94.14%\"]', '0.024秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:58', '[\"番茄-细菌性斑疹病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (494, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00a962ad-573b-44b1-97ae-912a6bd6e0b0___FAM_L-Blight-1431_JPG.rf.647b7803d7fe350b3a77bc67a996b81e.jpg', 'http://localhost:9999/files/effc55a918c34217ae069f037420ce6a_result_00a962ad-573b-44b1-97ae-912a6bd6e0b0___FAM_L-Blight-1431_JPG.rf.647b7803d7fe350b3a77bc67a996b81e.jpg', '[\"97.51%\"]', '0.040秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:58', '[\"葡萄-叶枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (495, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00b1f292-23dd-44d4-aad3-c1ffb6a6ad5a___RS_LB-4479_JPG.rf.f028e8f6720cd344f95e8875a0a6141d.jpg', 'http://localhost:9999/files/f0d9b0eaf7ee42bda653fcc53c5ac668_result_00b1f292-23dd-44d4-aad3-c1ffb6a6ad5a___RS_LB-4479_JPG.rf.f028e8f6720cd344f95e8875a0a6141d.jpg', '[\"95.12%\"]', '0.041秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"土豆-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (496, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00b7e89a-e129-4576-b51f-48923888bff9___GCREC_Bact-Sp-6202_JPG.rf.e2cbb896051752b2c7f48b4f3b25360d.jpg', 'http://localhost:9999/files/288076a977a34131b41bfb501d6e5421_result_00b7e89a-e129-4576-b51f-48923888bff9___GCREC_Bact-Sp-6202_JPG.rf.e2cbb896051752b2c7f48b4f3b25360d.jpg', '[\"92.63%\"]', '0.037秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"番茄-早疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (497, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00ce4c63-9913-4b16-898c-29f99acf0dc3___RS_Late-B-4982_JPG.rf.7ab31227dcced09371ffd1b9bbdc0eea.jpg', 'http://localhost:9999/files/b178db3f175942d1b4ced293dcb5906b_result_00ce4c63-9913-4b16-898c-29f99acf0dc3___RS_Late-B-4982_JPG.rf.7ab31227dcced09371ffd1b9bbdc0eea.jpg', '[\"98.10%\"]', '0.036秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (498, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00d994b5-92bb-433e-905f-4c1b33c3baf1___UF-Citrus_HLB_Lab-9932_JPG.rf.8a97e69168eafc5bb2d54f9b337b696b.jpg', 'http://localhost:9999/files/e771ee371e284ae391be53bd546d9f6a_result_00d994b5-92bb-433e-905f-4c1b33c3baf1___UF-Citrus_HLB_Lab-9932_JPG.rf.8a97e69168eafc5bb2d54f9b337b696b.jpg', '[\"97.27%\"]', '0.037秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (499, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/00fea166-176f-4ff9-a0c2-08d3d0263987___CREC_HLB-4726_JPG.rf.3f98ae1e66a22f286c7a1b9c2618e954.jpg', 'http://localhost:9999/files/ae1f4122df334f2b810d8c2341539316_result_00fea166-176f-4ff9-a0c2-08d3d0263987___CREC_HLB-4726_JPG.rf.3f98ae1e66a22f286c7a1b9c2618e954.jpg', '[\"97.36%\"]', '0.034秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (500, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0563d959-cdc8-4e5f-be50-aff6238218be___FAM_B-Rot-3600_JPG.rf.2327da002032515ec7b7f6600fa12105.jpg', 'http://localhost:9999/files/e510244afd9140fcb778ea5821bef6d1_result_0563d959-cdc8-4e5f-be50-aff6238218be___FAM_B-Rot-3600_JPG.rf.2327da002032515ec7b7f6600fa12105.jpg', '[\"97.46%\"]', '0.033秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"葡萄-黑腐病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (501, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a05b466-12ed-4ef3-935c-ea7e73107705___Rut-_Bact-S-3353_JPG.rf.4ebd3161b6f4233a40bece3c4b922341.jpg', 'http://localhost:9999/files/02cf87c94ade435ea8cfb528ee0c204c_result_0a05b466-12ed-4ef3-935c-ea7e73107705___Rut-_Bact-S-3353_JPG.rf.4ebd3161b6f4233a40bece3c4b922341.jpg', '[\"93.46%\"]', '0.028秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"桃子-桃细菌性穿孔病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (502, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a205a11-1e64-49f7-93c2-ad59312b4f83___RS_HL-0334_JPG.rf.38e1e52ba8da12b0707b77e75e095193.jpg', 'http://localhost:9999/files/860e5aab6fb7467599621190d62976f1_result_0a205a11-1e64-49f7-93c2-ad59312b4f83___RS_HL-0334_JPG.rf.38e1e52ba8da12b0707b77e75e095193.jpg', '[\"88.18%\"]', '0.040秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"番茄-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (503, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a31e630-0d98-416b-b0e4-88a88aad1dc5___RS_HL-9653_JPG.rf.a54bd420bd5cb1a294670daefcaf95a7.jpg', 'http://localhost:9999/files/efce836cfb5d4e51b0163e512c97d2b8_result_0a31e630-0d98-416b-b0e4-88a88aad1dc5___RS_HL-9653_JPG.rf.a54bd420bd5cb1a294670daefcaf95a7.jpg', '[\"95.46%\"]', '0.037秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"番茄-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (504, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a3f65fc-ef1c-4aed-b235-46bae4e5c0e7___GHLB2-Leaf-9065_JPG.rf.fcfd9327d2f29f3d6959da7d2ad31ce1.jpg', 'http://localhost:9999/files/17e331ff18bd4c9b9dda4cec2dc2bbfb_result_0a3f65fc-ef1c-4aed-b235-46bae4e5c0e7___GHLB2-Leaf-9065_JPG.rf.fcfd9327d2f29f3d6959da7d2ad31ce1.jpg', '[\"95.80%\"]', '0.037秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (505, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.4ff156da1d3c79757f5670d8b4c7618e.jpg', 'http://localhost:9999/files/3f6cf91dceda40b38fcbfe8c1561b125_result_0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.4ff156da1d3c79757f5670d8b4c7618e.jpg', '[\"79.69%\"]', '0.028秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:02:59', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (506, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.a8255e36477339a801b4a9d78a662270.jpg', 'http://localhost:9999/files/e57d0afb959b4089a9943d1d6cc969bc_result_0a4b3cde-c83a-4c83-b037-010369738152___RS_Late-B-6985_JPG.rf.a8255e36477339a801b4a9d78a662270.jpg', '[\"79.69%\"]', '0.032秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (507, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a4d80c5-8529-43cc-98ce-fbf987641f82___UF-Citrus_HLB_Lab-1539_JPG.rf.f5ec06b6c0d89e2ec11493f1c4acf383.jpg', 'http://localhost:9999/files/97bcda60601845f895b4d68cd4d863f0_result_0a4d80c5-8529-43cc-98ce-fbf987641f82___UF-Citrus_HLB_Lab-1539_JPG.rf.f5ec06b6c0d89e2ec11493f1c4acf383.jpg', '[\"96.04%\"]', '0.034秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (508, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a68a294-30d1-4422-ab7e-a1909ec277f7___JR_Sept-L-S-8443_JPG.rf.541a5dff91dbb01f2c5ba634152c54f3.jpg', 'http://localhost:9999/files/e54168109228490883578e81a66abf87_result_0a68a294-30d1-4422-ab7e-a1909ec277f7___JR_Sept-L-S-8443_JPG.rf.541a5dff91dbb01f2c5ba634152c54f3.jpg', '[\"95.95%\"]', '0.037秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"番茄-斑枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (509, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a71ba91-8bde-4a91-84a9-bf950488f718___Rutg-_Bact-S-2121_JPG.rf.b37b3a49d78523f7bb54fcd4cc737348.jpg', 'http://localhost:9999/files/04d60b5e78684ed2927cb753886b0095_result_0a71ba91-8bde-4a91-84a9-bf950488f718___Rutg-_Bact-S-2121_JPG.rf.b37b3a49d78523f7bb54fcd4cc737348.jpg', '[\"92.38%\"]', '0.030秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"桃子-桃细菌性穿孔病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (510, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a76257e-6a78-459b-8f51-a266805121eb___Matt-S_CG-2527_JPG.rf.a5a68c913c88756097638ec19540329f.jpg', 'http://localhost:9999/files/f89a78b1e466455c8534c52f22970162_result_0a76257e-6a78-459b-8f51-a266805121eb___Matt-S_CG-2527_JPG.rf.a5a68c913c88756097638ec19540329f.jpg', '[\"95.02%\"]', '0.031秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"番茄-斑枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (511, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0a8967d4-bb72-4fe4-8096-55fc57437557___RS_Late-B-6974_JPG.rf.03e109c1bd4e7eed9fb47348ed8aca69.jpg', 'http://localhost:9999/files/037dde4498df4d8d97db3c2cc1230a54_result_0a8967d4-bb72-4fe4-8096-55fc57437557___RS_Late-B-6974_JPG.rf.03e109c1bd4e7eed9fb47348ed8aca69.jpg', '[\"94.87%\", \"71.88%\"]', '0.027秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"番茄-晚疫病\", \"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (512, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0ab271a7-765e-4675-8bfc-e249c0c86fdd___Keller-St_CG-1778_JPG.rf.1d437ed72110c112ceae775b48997960.jpg', 'http://localhost:9999/files/bb80b6b158e242d4b43ed9850feb6103_result_0ab271a7-765e-4675-8bfc-e249c0c86fdd___Keller-St_CG-1778_JPG.rf.1d437ed72110c112ceae775b48997960.jpg', '[\"92.68%\"]', '0.028秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"番茄-斑枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (513, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0aba594e-8b7c-4968-b556-a4287f277152___CREC_HLB-6399_JPG.rf.bc613477e595d687ebba5ae7bab1427b.jpg', 'http://localhost:9999/files/1c62ab4d670e446fa4622b8eed0993bd_result_0aba594e-8b7c-4968-b556-a4287f277152___CREC_HLB-6399_JPG.rf.bc613477e595d687ebba5ae7bab1427b.jpg', '[\"97.22%\"]', '0.030秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (514, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0ac12d2d-a98c-4e25-b715-94e7579a98f1___FREC_Pwd-M-4887_JPG.rf.1784d3c2c87a570f033958431a5980f5.jpg', 'http://localhost:9999/files/6fceb572727f444f8c39d06dd9af2956_result_0ac12d2d-a98c-4e25-b715-94e7579a98f1___FREC_Pwd-M-4887_JPG.rf.1784d3c2c87a570f033958431a5980f5.jpg', '[\"98.97%\"]', '0.035秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"樱桃-白粉病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (515, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0ac36661-a47d-47ff-8948-42edec033b87___Crnl_L-Mold-9127_JPG.rf.8de9eb6a1cc6476bc266542692e8cc0d.jpg', 'http://localhost:9999/files/112482354d364754b1f0b74a23607e18_result_0ac36661-a47d-47ff-8948-42edec033b87___Crnl_L-Mold-9127_JPG.rf.8de9eb6a1cc6476bc266542692e8cc0d.jpg', '[\"87.60%\"]', '0.034秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"番茄-叶霉病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (516, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0b19e488-1361-49b9-a5bc-b47d5bd8207c___FAM_L-Blight-4587_JPG.rf.f23d0be5fd2453856f59832d732dfd10.jpg', 'http://localhost:9999/files/67343318653b4fc0bb9bb9fd2434f966_result_0b19e488-1361-49b9-a5bc-b47d5bd8207c___FAM_L-Blight-4587_JPG.rf.f23d0be5fd2453856f59832d732dfd10.jpg', '[\"95.46%\"]', '0.034秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"葡萄-叶枯病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (517, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0b27c03f-b3bc-4d96-9b76-6fbd779404b9___NREC_B-Spot-1799_JPG.rf.73b75327e4a2dd65d2433213eda82d08.jpg', 'http://localhost:9999/files/9d04594762be481599287287a8b1033d_result_0b27c03f-b3bc-4d96-9b76-6fbd779404b9___NREC_B-Spot-1799_JPG.rf.73b75327e4a2dd65d2433213eda82d08.jpg', '[\"96.29%\"]', '0.032秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:00', '[\"甜椒-细菌性斑疹\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (518, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0b6caac4-cc62-4c46-9de4-1815a0aa6dbe___GHLB2-Leaf-8799_JPG.rf.332270a78d884d004704103e4cf64fc1.jpg', 'http://localhost:9999/files/2b1dfb33c6e64a6baa2b4a04a3b4a023_result_0b6caac4-cc62-4c46-9de4-1815a0aa6dbe___GHLB2-Leaf-8799_JPG.rf.332270a78d884d004704103e4cf64fc1.jpg', '[\"95.12%\"]', '0.030秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:01', '[\"番茄-晚疫病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (519, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/0b7c3223-4ece-4051-95df-a870f7e239e8___CREC_HLB-5449_JPG.rf.7e186d28d2c28d55713ade521b3b1557.jpg', 'http://localhost:9999/files/480db090a8b14bdfb661f707df66ee05_result_0b7c3223-4ece-4051-95df-a870f7e239e8___CREC_HLB-5449_JPG.rf.7e186d28d2c28d55713ade521b3b1557.jpg', '[\"97.41%\"]', '0.036秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:01', '[\"柑桔-黄龙病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (520, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/2e1013a9-88bb-494f-9ed5-7e8e79f9a7ca___RS_NLB-3606-copy_jpg.rf.1f83205263403ec4e27fed035781c822.jpg', 'http://localhost:9999/files/8dcd2439e2cb4f00a72c6aebff098b75_result_2e1013a9-88bb-494f-9ed5-7e8e79f9a7ca___RS_NLB-3606-copy_jpg.rf.1f83205263403ec4e27fed035781c822.jpg', '[\"90.04%\"]', '0.039秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:01', '[\"玉米-大斑病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (521, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/4629f07d-b1d2-4569-84fc-c86675a5483d___Rutg-_HL-2424_JPG.rf.70c72d14a82266396eb35a8004fe3994.jpg', 'http://localhost:9999/files/41a15d9e5edb48fa97c7fe33df7c916a_result_4629f07d-b1d2-4569-84fc-c86675a5483d___Rutg-_HL-2424_JPG.rf.70c72d14a82266396eb35a8004fe3994.jpg', '[\"86.52%\"]', '0.033秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:01', '[\"桃子-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (522, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/87e7e3be-acc9-45bf-a843-5528b1ec9484___Crnl_L-Mold-8924_JPG.rf.afd5687787271980002ab1205202077d.jpg', 'http://localhost:9999/files/f25922e363754b2a8bda9c090d19ad02_result_87e7e3be-acc9-45bf-a843-5528b1ec9484___Crnl_L-Mold-8924_JPG.rf.afd5687787271980002ab1205202077d.jpg', '[\"88.96%\"]', '0.035秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:01', '[\"番茄-叶霉病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (523, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/e01a2a7d-49cd-43b0-9afa-cdcd59aaa558___Rutg-_HL-2409_JPG.rf.32bf7362bcedf73342245df924353666.jpg', 'http://localhost:9999/files/9535fef2dda1401c88dda9c29a303fbb_result_e01a2a7d-49cd-43b0-9afa-cdcd59aaa558___Rutg-_HL-2409_JPG.rf.32bf7362bcedf73342245df924353666.jpg', '[\"89.26%\"]', '0.029秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:01', '[\"桃子-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (524, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/e01a2a7d-49cd-43b0-9afa-cdcd59aaa558___Rutg-_HL-2409_JPG.rf.7ee8177112526f42d123b94f0b779485.jpg', 'http://localhost:9999/files/24345ee0268149538bf5031117f56373_result_e01a2a7d-49cd-43b0-9afa-cdcd59aaa558___Rutg-_HL-2409_JPG.rf.7ee8177112526f42d123b94f0b779485.jpg', '[\"89.31%\"]', '0.033秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:01', '[\"桃子-健康\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (525, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/shape-323-_jpg.rf.0c4b357574e2b43f989e5e6e5fda99d4.jpg', 'http://localhost:9999/files/6161226abb1f49ab9918aac251300606_result_shape-323-_jpg.rf.0c4b357574e2b43f989e5e6e5fda99d4.jpg', '[\"85.11%\"]', '0.043秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:01', '[\"水稻-稻瘟病\"]', '不使用Al', '未选择AI，无AI建议！');
+INSERT INTO `imgrecords` VALUES (526, 'http://localhost:9999/files/52c108e886f54232ac0573438e007cbb/shape-346-_jpg.rf.9cd079d62fdc8f93a33c75027db5f4c5.jpg', 'http://localhost:9999/files/deedbf795dc44d5b85cc6dca330e859c_result_shape-346-_jpg.rf.9cd079d62fdc8f93a33c75027db5f4c5.jpg', '[\"81.64%\"]', '0.031秒', 0.60, 'best.pt', 'admin', '2025-04-24 11:03:01', '[\"水稻-褐斑病\"]', '不使用Al', '未选择AI，无AI建议！');
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `time` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES (1, 'admin', 'admin', '1', '男', '111111@qq.com', '353252', 'admin', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', '2025-03-05 16:00:27');
+INSERT INTO `user` VALUES (2, '1111', '111', '111', '111', '11', '11', 'common', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', '2025-03-11 20:27:04');
+INSERT INTO `user` VALUES (3, '222', '222', '张三', '男', '123@qq.com', '1234567889', 'common', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', '2025-04-24 09:45:28');
+INSERT INTO `user` VALUES (4, '123', '123', '张三', '男', '123@qq.com', '1234567889', 'common', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', '2025-04-24 09:45:36');
+INSERT INTO `user` VALUES (5, '333', '333', '张三', '男', '123@qq.com', '1234567889', 'common', 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif', '2025-04-24 09:45:40');
+
+-- ----------------------------
+-- Table structure for videorecords
+-- ----------------------------
+DROP TABLE IF EXISTS `videorecords`;
+CREATE TABLE `videorecords`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `input_video` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `out_video` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `start_time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `conf` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `weight` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `kind` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of videorecords
+-- ----------------------------
+INSERT INTO `videorecords` VALUES (10, 'http://localhost:9999/files/fd6c06c2c5624e5e94e035af752da713_QQ2025424-101040-HD.mp4', 'http://localhost:9999/files/28d38b8f32344feb8c8cab1d2d39c6ff_output.mp4', 'admin', '2025-04-24 10:57:35', '0.81', 'best.onnx', NULL);
+INSERT INTO `videorecords` VALUES (11, 'http://localhost:9999/files/6f1d2fee9f0c4c068edf6f78447cb669_QQ2025424-101040-HD.mp4', 'http://localhost:9999/files/27bc7f9aeab94b3688999d7e5fa6aa9f_output.mp4', 'admin', '2025-04-24 11:03:31', '0.82', 'best.pt', NULL);
+
+-- ----------------------------
+-- Procedure structure for update_camerarecords_id
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `update_camerarecords_id`;
+delimiter ;;
+CREATE PROCEDURE `update_camerarecords_id`()
+BEGIN
+CREATE TEMPORARY TABLE temp_camerarecords AS
+SELECT weight, conf, username, start_time, out_video
+FROM camerarecords;
+DROP TABLE camerarecords;
+CREATE TABLE camerarecords(
+id int(11) NOT NULL AUTO_INCREMENT,
+weight varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+conf varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+username varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+start_time varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+out_video varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+PRIMARY KEY (id) USING BTREE
+);
+INSERT INTO camerarecords (weight, conf, username, start_time, out_video)
+SELECT weight, conf, username, start_time, out_video
+FROM temp_camerarecords;
+DROP TEMPORARY TABLE temp_camerarecords;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for update_imgrecords_id
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `update_imgrecords_id`;
+delimiter ;;
+CREATE PROCEDURE `update_imgrecords_id`()
+BEGIN
+-- 临时保存表结构和数据
+ CREATE TEMPORARY TABLE temp_imgrecords AS
+SELECT input_img, out_img, confidence, all_time, conf, weight, username, start_time, label
+FROM imgrecords;
+-- 删除原表
+DROP TABLE imgrecords;
+-- 重新创建表
+CREATE TABLE imgrecords (
+id int(11) NOT NULL AUTO_INCREMENT,
+input_img varchar(255) DEFAULT NULL,
+out_img varchar(255) DEFAULT NULL,
+confidence varchar(255) DEFAULT NULL,
+all_time varchar(255) DEFAULT NULL,
+conf DECIMAL(5,2) DEFAULT NULL,
+weight varchar(255) DEFAULT NULL,
+username varchar(255) DEFAULT NULL,
+start_time varchar(255) DEFAULT NULL,
+label varchar(255) DEFAULT NULL,
+PRIMARY KEY (id)
+);
+-- 将临时表的数据插入新表
+INSERT INTO imgrecords (input_img, out_img, confidence, all_time, conf, weight, username, start_time, label)
+SELECT input_img, out_img, confidence, all_time, conf, weight, username, start_time, label
+FROM temp_imgrecords;
+-- 删除临时表
+DROP TEMPORARY TABLE temp_imgrecords;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for update_videorecords_id
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `update_videorecords_id`;
+delimiter ;;
+CREATE PROCEDURE `update_videorecords_id`()
+BEGIN
+CREATE TEMPORARY TABLE temp_videorecords AS
+SELECT input_video, out_video, username, start_time, conf, weight
+FROM videorecords;
+DROP TABLE videorecords;
+CREATE TABLE videorecords(
+id int(11) NOT NULL AUTO_INCREMENT,
+input_video varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+out_video varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+username varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+start_time varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+conf varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+weight varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+PRIMARY KEY (id) USING BTREE
+);
+INSERT INTO videorecords (input_video, out_video, username, start_time, conf, weight)
+SELECT input_video, out_video, username, start_time, conf, weight
+FROM temp_videorecords;
+DROP TEMPORARY TABLE temp_videorecords;
+END
+;;
+delimiter ;
+
+SET FOREIGN_KEY_CHECKS = 1;
