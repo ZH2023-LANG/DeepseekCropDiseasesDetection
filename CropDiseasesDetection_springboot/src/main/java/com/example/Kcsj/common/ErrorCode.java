@@ -1,0 +1,18 @@
+package com.example.Kcsj.common;
+
+public enum ErrorCode {
+    SUCCESS,
+    INVALID_PARAM,
+    UNAUTHORIZED,
+    FORBIDDEN,
+    USER_NOT_FOUND,
+    PASSWORD_MISMATCH,
+    TOKEN_EXPIRED,
+    TOKEN_INVALID,
+    RESOURCE_NOT_FOUND,
+    CONFLICT,
+    UPSTREAM_FLASK_ERROR,
+    TASK_EXECUTION_ERROR,
+    INTERNAL_ERROR
+}
+
