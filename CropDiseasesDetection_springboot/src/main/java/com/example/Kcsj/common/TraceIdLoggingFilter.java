@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -36,11 +38,22 @@ public class TraceIdLoggingFilter extends OncePerRequestFilter {
         } finally {
             long cost = System.currentTimeMillis() - startMs;
             response.setHeader(TraceContext.HEADER_TRACE_ID, traceId);
-            log.info("request method={} path={} status={} costMs={} ip={}",
-                request.getMethod(), request.getRequestURI(), response.getStatus(), cost, request.getRemoteAddr());
+            log.info("request method={} path={} status={} costMs={} ip={} userId={}",
+                request.getMethod(), request.getRequestURI(), response.getStatus(), cost, request.getRemoteAddr(), resolveUserId());
             TraceContext.clear();
             MDC.remove("traceId");
         }
     }
-}
 
+    private String resolveUserId() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication.getPrincipal() == null) {
+            return "anonymous";
+        }
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof com.example.Kcsj.security.UserPrincipal) {
+            return String.valueOf(((com.example.Kcsj.security.UserPrincipal) principal).getUserId());
+        }
+        return "anonymous";
+    }
+}

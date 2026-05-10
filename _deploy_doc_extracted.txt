@@ -1,0 +1,149 @@
+
+===== PAGE 1 =====
+1. Python开发环境搭建
+ 
+你需要准备好，anaconda, pycharm, idea, vscode
+ 
+1.1. 使⽤Anaconda创建虚拟环境
+ 
+打开cmd 输⼊conda create --name yolodeep python=3.12.4创建环境（其中yolodeep 是环境名
+称，随你怎么起。后⾯的3.12.4是python的版本。可以换成别的，不要太低。最好3.8以上。）
+输⼊y，然后回⻋，完成环境创建。
+1.1.1. 打开后端
+ 
+⽤PyCharm打开项⽬⽂件中带有flask后缀的⽂件夹。
+打开该项⽬后，点击右下⻆。add local interpreter
+ 
+ 
+conda create --name yolodeep  python=3.12.4
+
+
+===== PAGE 2 =====
+选择刚才创建好的虚拟环境。最后点击ok！！！！
+ 
+ 
+ 
+1.2. 使⽤PyCharm创建虚拟环境（和anoconda二选一即
+可）
+ 
+在命令行输入 python -m venv .venv
+
+
+===== PAGE 3 =====
+ 
+此时关闭PyCharm，重新打开项⽬！！
+此时关闭PyCharm，重新打开项⽬！！
+此时关闭PyCharm，重新打开项⽬！！
+然后按照顺序点击。
+ 
+1.3. pytorch环境安装
+ 
+cmd 接着输⼊ nvidia-smi 查看cuda最⾼版本
+
+
+===== PAGE 4 =====
+cuda版本是12.3 
+然后去官网查对应的版本  输⼊https://pytorch.org/来到pytorch官⽹
+⽐如我的cuda最⾼为12.3，就向下兼容选择11.8。然后复制安装命令：
+具体根据你的电脑情况选择，不要照抄。
+如果电脑没有gpu，直接选择cpu的安装命令就好了。
+ 
+执行安装命令
+这⾥最好使⽤梯⼦。下载gpu的版本⼀定不要⽤清华源，阿⾥源这些镜像源。因为他们不会实时跟新。不
+⼀定能下到你要的版本。会有问题。
+ 
+1.4. 安装ultralytics 也就是yolo
+ 
+接着上面的输入 pip install ultralytics
+ 
+1.5. 安装其他依赖
+ 
+pip install flask flask-socketio openai
+ 
+ 
+pip3 install torch torchvision torchaudio --index-url 
+https://download.pytorch.org/whl/cu118
+
+
+===== PAGE 5 =====
+1.6. 配置API
+ 
+由于DeepSeek需要收费，你可⾃⾏选择是否购买。最低10原起购。Qwen可免费试⽤。
+ 
+ 
+1.7. DeepSeekAPI获取
+ 
+https://www.deepseek.com/ 进⼊DeepSeek官⽹。创建账号完成登录。点击API开放平台，充值，点击
+API keys即可创建API。
+创建完成后⼀定记得点击复制！！！
+创建完成后⼀定记得点击复制！！！
+创建完成后⼀定记得点击复制！！！
+ 
+ 
+1.8. Qwen API获取
+ 
+   
+https://cloud.siliconflow.cn/i/Ryt5Loxh 进⼊硅基流动官⽹。创建账号完成登录。
+这⾥填写我的邀请码Ryt5Loxh，你我都会额外获得 2000万 Tokens！
+这⾥填写我的邀请码Ryt5Loxh，你我都会额外获得 2000万 Tokens！
+这⾥填写我的邀请码 Ryt5Loxh，你我都会额外获得 2000万 Tokens！
+ 
+创建完成后点击API密钥即可创建API。由于有免费额度。所以不需要实名认证充值了。可直接创建API。
+ 
+1.9. 复制粘贴密钥到工程
+ 
+在pycharm中打开main.py⽂件夹。在此处将刚才的密钥复制过来。如果你不想花钱购买DeepSeek
+API。那就不要在前端选择DeepSeek。
+
+
+===== PAGE 6 =====
+此时可运⾏main.py⽂件。 
+ 
+1.10. 安装FFmpeg
+ 
+将⽂件中的FFmpeg解压到任意位置（你能找到的地⽅，不要有中⽂路径！）。
+解压完成后进⼊bin⽬录
+复制该路径   比如我的路径是 D:\Envs\ffmpeg-7.1-full_build\bin
+打开系统环境变量 添加到PATH内
+验证：如果cmd中输入ffmpeg可以找到那么就是成功了。
+2. SpringBoot环境安装
+ 
+2.1. 导入mysql
+ 
+打开navicat右击数据库选择新建数据库(使⽤MySQL数据库。要求8.0以上。要求8.0以上。要求8.0以
+上。)
+ 
+选择运⾏sql⽂件  选择yolo_detect.sql⽂件并打开
+ 
+2.2. 打开后端工程代码
+ 
+使⽤Idea打开后缀名为springboot的⽂件。
+打开后等待期加载即可。
+在这⾥将数据库名、账号密码换成⾃⼰的。并确保数据库名字⼀致。
+
+
+===== PAGE 7 =====
+ 
+不⽤下载jdk，不⽤做任何配置
+不⽤下载jdk，不⽤做任何配置
+不⽤下载jdk，不⽤做任何配置
+如果出现报错，说明之前你做过maven配置。先clean清除，再install安装。都不⾏就卸载idea重新下最
+新的idea即可。
+运⾏Kcsj如下则安装成功。同时也成功运⾏springboot后端。
+3. Vue环境安装
+ 
+⾸先进⼊https://nodejs.org/zh-cn安装node.js
+下载后直接⽆脑安装，⼀直点击下⼀步即可。
+要安装完成后再打开项⽬。
+使⽤Vscode打开BrainTumorDetection_vue⽂件（使⽤HbuilderX也是⼀样的）
+打开后同时按住“Ctrl+`”（键盘左上⻆esc下⾯的按键）即可打开终端。
+此时输⼊ npm install 安装依赖
+安装完成后，输⼊ npm run dev启动项⽬
+
+
+===== PAGE 8 =====
+此时成功启动项⽬，将⿏标放到链接上后会弹出打开⽅法
+按住ctrl 同时点击链接即可打开。完成。
+ 
+注意项目路径中不能有中文和&符号否则会报错。更多技术学习交流 
+最终的运⾏要打开PyCharm、Idea、Vscode。三个软件。

@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.Kcsj.common.Result;
 import com.example.Kcsj.entity.VideoRecords;
 import com.example.Kcsj.mapper.VideoRecordsMapper;
+import com.example.Kcsj.security.SecurityUtils;
+import com.example.Kcsj.service.AuditLogService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -16,6 +18,8 @@ import javax.annotation.Resource;
 public class VideoRecordsController {
     @Resource
     VideoRecordsMapper videoRecordsMapper;
+    @Resource
+    AuditLogService auditLogService;
 
     @GetMapping("/all")
     public Result<?> GetAll() {
@@ -55,6 +59,7 @@ public class VideoRecordsController {
     @DeleteMapping("/{id}")
     public Result<?> delete(@PathVariable int id) {
         videoRecordsMapper.deleteById(id);
+        auditLogService.tryLog(safeUserId(), "VIDEO_RECORD_DELETE", "VIDEO_RECORD", String.valueOf(id), "legacy delete");
         return Result.success();
     }
 
@@ -70,5 +75,13 @@ public class VideoRecordsController {
         System.out.println(videoRecords);
         videoRecordsMapper.insert(videoRecords);
         return Result.success();
+    }
+
+    private Integer safeUserId() {
+        try {
+            return SecurityUtils.currentUserId();
+        } catch (Exception ignore) {
+            return null;
+        }
     }
 }

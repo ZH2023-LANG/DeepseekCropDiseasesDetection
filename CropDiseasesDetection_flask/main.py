@@ -18,8 +18,8 @@ class VideoProcessingApp:
         self.port = port
         self.fun = Fun()
         self.setup_routes()
-        self.DeepSeek = 'sk-ae11edc8f7d442b6843003a7f54a7453'
-        self.Qwen = 'sk-jutikhhwhnuuqhqegyrrzfvacqurjhuukwgacdqyjnfljudi'
+        self.DeepSeek = 'sk-cd2dbe17d83c44a0ae00e14f951286f6'
+        self.Qwen = 'sk-cztlmqpxlysokzgfyuieguzaxsulhdbdtkyrxyfhzeajfgut'
         self.data = {}  # 存储接收参数
         self.paths = {
             'download': './runs/video/download.mp4',

@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.Kcsj.common.Result;
 import com.example.Kcsj.entity.CameraRecords;
 import com.example.Kcsj.mapper.CameraRecordsMapper;
+import com.example.Kcsj.security.SecurityUtils;
+import com.example.Kcsj.service.AuditLogService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,6 +17,8 @@ import javax.annotation.Resource;
 public class CameraRecordsController {
     @Resource
     CameraRecordsMapper cameraRecordsMapper;
+    @Resource
+    AuditLogService auditLogService;
 
     @GetMapping("/all")
     public Result<?> GetAll() {
@@ -54,6 +58,7 @@ public class CameraRecordsController {
     @DeleteMapping("/{id}")
     public Result<?> delete(@PathVariable int id) {
         cameraRecordsMapper.deleteById(id);
+        auditLogService.tryLog(safeUserId(), "CAMERA_RECORD_DELETE", "CAMERA_RECORD", String.valueOf(id), "legacy delete");
         return Result.success();
     }
 
@@ -69,5 +74,13 @@ public class CameraRecordsController {
         System.out.println(cameraRecords);
         cameraRecordsMapper.insert(cameraRecords);
         return Result.success();
+    }
+
+    private Integer safeUserId() {
+        try {
+            return SecurityUtils.currentUserId();
+        } catch (Exception ignore) {
+            return null;
+        }
     }
 }

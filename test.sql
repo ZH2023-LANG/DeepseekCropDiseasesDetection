@@ -1,18 +1,5 @@
-/*
- Navicat Premium Data Transfer
 
- Source Server Type    : MySQL
- Source Server Version : 90000 (9.0.0)
- Source Host           : localhost:3306
- Source Schema         : test
-
- Target Server Type    : MySQL
- Target Server Version : 90000 (9.0.0)
- File Encoding         : 65001
-
- Date: 24/04/2025 14:45:34
-*/
-
+use yoloai;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 

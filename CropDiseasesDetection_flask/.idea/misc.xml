@@ -3,7 +3,7 @@
   <component name="Black">
     <option name="sdkName" value="voice_emotion" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="pytorch" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Remote Python 3.8.10 (sftp://root@connect.nmb2.seetacloud.com:27691/root/.virtualenvs/CropDiseasesDetection_flask/bin/python)" project-jdk-type="Python SDK" />
   <component name="PyCharmProfessionalAdvertiser">
     <option name="shown" value="true" />
   </component>

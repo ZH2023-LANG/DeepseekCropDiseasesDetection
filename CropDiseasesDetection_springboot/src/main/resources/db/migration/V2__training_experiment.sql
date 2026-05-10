@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS training_experiment (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    experiment_no VARCHAR(64) NOT NULL,
+    experiment_name VARCHAR(128) NOT NULL,
+    dataset_name VARCHAR(128) NOT NULL,
+    params_json MEDIUMTEXT NOT NULL,
+    result_json MEDIUMTEXT NULL,
+    remark VARCHAR(512) NULL,
+    owner_id INT NOT NULL,
+    map50 DOUBLE NULL,
+    map5095 DOUBLE NULL,
+    train_loss DOUBLE NULL,
+    val_loss DOUBLE NULL,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME NOT NULL,
+    UNIQUE KEY uk_experiment_no (experiment_no),
+    INDEX idx_experiment_owner_created (owner_id, created_at),
+    INDEX idx_experiment_name (experiment_name),
+    INDEX idx_experiment_dataset (dataset_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='训练实验管理';
