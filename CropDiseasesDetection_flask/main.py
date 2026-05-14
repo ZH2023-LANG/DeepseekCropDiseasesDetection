@@ -177,7 +177,13 @@ class VideoProcessingApp:
                     if not ret:
                         break
                     frame = cv2.resize(frame, (640, 480))
-                    results = model.predict(source=frame, conf=float(self.data['conf']), show=False)
+                    # results = model.predict(source=frame, conf=float(self.data['conf']), show=False)
+                    #results = model.predict(source=frame, conf=float(self.data['conf']), show=False, device='cuda:0')
+                    if self.data["weight"].endswith('.onnx'):
+                        results = model.predict(source=frame, conf=float(self.data['conf']), show=False, device='cpu')
+                    else:
+                        results = model.predict(source=frame, conf=float(self.data['conf']), show=False,
+                                                device='cuda:0')
                     processed_frame = results[0].plot()
                     video_writer.write(processed_frame)
                     _, jpeg = cv2.imencode('.jpg', processed_frame)
@@ -194,6 +200,46 @@ class VideoProcessingApp:
 
         return Response(generate(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
+    # def predictCamera(self):
+    #     """摄像头视频流处理接口"""
+    #     self.data.clear()
+    #     self.data.update({
+    #         "username": request.args.get('username'), "weight": request.args.get('weight'),
+    #         "conf": request.args.get('conf'), "startTime": request.args.get('startTime')
+    #     })
+    #     self.socketio.emit('message', {'data': '正在加载，请稍等！'})
+    #     model = YOLO(f'./weights/{self.data["weight"]}')
+    #     cap = cv2.VideoCapture(0)
+    #     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    #     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+    #     video_writer = cv2.VideoWriter(self.paths['camera_output'], cv2.VideoWriter_fourcc(*'XVID'), 20, (640, 480))
+    #     self.recording = True
+    #
+    #     def generate():
+    #         try:
+    #             while self.recording:
+    #                 ret, frame = cap.read()
+    #                 if not ret:
+    #                     break
+    #                 # results = model.predict(source=frame, imgsz=640, conf=float(self.data['conf']), show=False)
+    #                 results = model.predict(source=frame, imgsz=640, conf=float(self.data['conf']), show=False,
+    #                                         device='cuda:0')
+    #                 processed_frame = results[0].plot()
+    #                 if self.recording and video_writer:
+    #                     video_writer.write(processed_frame)
+    #                 _, jpeg = cv2.imencode('.jpg', processed_frame)
+    #                 yield b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n'
+    #         finally:
+    #             self.fun.cleanup_resources(cap, video_writer)
+    #             self.socketio.emit('message', {'data': '处理完成，正在保存！'})
+    #             for progress in self.fun.convert_avi_to_mp4(self.paths['camera_output']):
+    #                 self.socketio.emit('progress', {'data': progress})
+    #             uploadedUrl = self.fun.upload(self.paths['output'])
+    #             self.data["outVideo"] = uploadedUrl
+    #             self.fun.save_data(json.dumps(self.data), 'http://localhost:9999/cameraRecords')
+    #             self.fun.cleanup_files([self.paths['download'], self.paths['output'], self.paths['camera_output']])
+    #
+    #     return Response(generate(), mimetype='multipart/x-mixed-replace; boundary=frame')
     def predictCamera(self):
         """摄像头视频流处理接口"""
         self.data.clear()
@@ -215,7 +261,8 @@ class VideoProcessingApp:
                     ret, frame = cap.read()
                     if not ret:
                         break
-                    results = model.predict(source=frame, imgsz=640, conf=float(self.data['conf']), show=False)
+                    results = model.predict(source=frame, imgsz=640, conf=float(self.data['conf']), show=False,
+                                            device='cuda:0')
                     processed_frame = results[0].plot()
                     if self.recording and video_writer:
                         video_writer.write(processed_frame)
@@ -224,15 +271,23 @@ class VideoProcessingApp:
             finally:
                 self.fun.cleanup_resources(cap, video_writer)
                 self.socketio.emit('message', {'data': '处理完成，正在保存！'})
-                for progress in self.fun.convert_avi_to_mp4(self.paths['camera_output']):
-                    self.socketio.emit('progress', {'data': progress})
-                uploadedUrl = self.fun.upload(self.paths['output'])
-                self.data["outVideo"] = uploadedUrl
+
+                # 检查摄像头视频文件是否存在且不为空
+                import os
+                if os.path.exists(self.paths['camera_output']) and os.path.getsize(self.paths['camera_output']) > 0:
+                    for progress in self.fun.convert_avi_to_mp4(self.paths['camera_output']):
+                        self.socketio.emit('progress', {'data': progress})
+                    uploadedUrl = self.fun.upload(self.paths['output'])
+                    self.data["outVideo"] = uploadedUrl
+                    print(f"摄像头视频上传成功: {uploadedUrl}")
+                else:
+                    print(f"摄像头视频文件不存在或为空，跳过转换和上传")
+                    self.data["outVideo"] = None
+
                 self.fun.save_data(json.dumps(self.data), 'http://localhost:9999/cameraRecords')
                 self.fun.cleanup_files([self.paths['download'], self.paths['output'], self.paths['camera_output']])
 
         return Response(generate(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
     def stopCamera(self):
         """停止摄像头预测"""
         self.recording = False

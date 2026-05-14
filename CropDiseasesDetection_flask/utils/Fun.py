@@ -40,7 +40,8 @@ class Fun:
         Yields:
             float: 转换进度百分比 (0-100)
         """
-        ffmpeg_command = ["ffmpeg", "-i", input_path, "-vcodec", "libx264", output_path, "-y"]
+        ffmpeg_path = r"C:\ffmpeg-7.1-full_build\bin\ffmpeg.exe"
+        ffmpeg_command = [ffmpeg_path, "-i", input_path, "-vcodec", "libx264", output_path, "-y"]
 
         # 使用 subprocess 替代 shell=True，提高安全性
         process = subprocess.Popen(ffmpeg_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
