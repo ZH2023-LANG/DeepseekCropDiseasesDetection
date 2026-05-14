@@ -183,7 +183,7 @@ const handleImgFolderChange = async (event: Event) => {
 
 // 上传文件夹到后端
 const uploadFolderToBackend = async (files: File[], type: 'img') => {
-    const uploadUrl = 'http://localhost:9999/files/uploadFolder';
+    const uploadUrl = '/api/files/uploadFolder';
     const zip = new JSZip();
     const folderName = `${type}${Date.now()}`;
 
@@ -244,7 +244,7 @@ const startBatchPredict = async () => {
             weight: weight.value,
         };
 
-        const res = await request.post('/flask/predictImgBatch', data);
+        const res = await request.post('/api/flask/predictImgBatch', data);
 
         if (res.code == 0) {
             state.data = res.data.map((item: any, index: number) => ({ ...item, index: index + 1 }));

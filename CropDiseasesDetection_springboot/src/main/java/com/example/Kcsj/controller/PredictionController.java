@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.Kcsj.common.Result;
 import com.example.Kcsj.entity.ImgRecords;
 import com.example.Kcsj.mapper.ImgRecordsMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.util.Date;
 
 @RestController
 @RequestMapping("/flask")
@@ -19,7 +19,14 @@ public class PredictionController {
     @Resource
     ImgRecordsMapper imgRecordsMapper;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
+
+    @Value("${flask.base-url:http://127.0.0.1:5000}")
+    private String flaskBaseUrl;
+
+    public PredictionController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     // 定义接收的参数类
     public static class PredictRequest {
@@ -103,7 +110,7 @@ public class PredictionController {
             HttpEntity<PredictRequest> requestEntity = new HttpEntity<>(request, headers);
 
             // 调用 Flask API
-            String response = restTemplate.postForObject("http://localhost:5000/predictImg", requestEntity, String.class);
+            String response = restTemplate.postForObject(flaskBaseUrl + "/predictImg", requestEntity, String.class);
 //            System.out.println("Received response: " + response);
             JSONObject responses = JSONObject.parseObject(response);
             if(responses.get("status").equals(400)){
@@ -133,8 +140,41 @@ public class PredictionController {
     public Result<?> getFileNames() {
         try {
             // 调用 Flask API
-            String response = restTemplate.getForObject("http://127.0.0.1:5000/file_names", String.class);
+            String response = restTemplate.getForObject(flaskBaseUrl + "/file_names", String.class);
             return Result.success(response);
+        } catch (Exception e) {
+            return Result.error("-1", "Error: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/predictImgBatch")
+    public Result<?> predictImgBatch(@RequestBody JSONObject requestBody) {
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity<JSONObject> requestEntity = new HttpEntity<>(requestBody, headers);
+            String response = restTemplate.postForObject(flaskBaseUrl + "/predictImgBatch", requestEntity, String.class);
+            JSONObject responses = JSONObject.parseObject(response);
+            Integer code = responses.getInteger("code");
+            if (code != null && code == 0) {
+                return Result.success(responses.get("data"));
+            }
+            return Result.error("-1", responses.getString("message"));
+        } catch (Exception e) {
+            return Result.error("-1", "Error: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/stopCamera")
+    public Result<?> stopCamera() {
+        try {
+            String response = restTemplate.getForObject(flaskBaseUrl + "/stopCamera", String.class);
+            JSONObject responses = JSONObject.parseObject(response);
+            Integer code = responses.getInteger("code");
+            if (code != null && code == 0) {
+                return Result.success(responses);
+            }
+            return Result.error("-1", responses.getString("message"));
         } catch (Exception e) {
             return Result.error("-1", "Error: " + e.getMessage());
         }

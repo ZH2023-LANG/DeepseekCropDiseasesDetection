@@ -116,11 +116,9 @@ const start = () => {
 };
 
 const stop = () => {
-	request.get('/flask/stopCamera').then((res) => {
+	request.get('/api/flask/stopCamera').then((res) => {
 		if (res.code == 0) {
-			res.data = JSON.parse(res.data);
-			console.log(res.data);
-			state.weight_items = res.data.weight_items;
+			ElMessage.success('已停止录制，正在保存视频');
 		} else {
 			ElMessage.error(res.msg);
 		}
